@@ -1,6 +1,10 @@
 const Header = () => {
     return (
-        <h1 className="header">Expense Tracker</h1>
+        <div className="container">
+            <div className="col-12">
+                <h1 className='header'><center>Expense Tracker</center></h1>
+            </div>
+        </div>
     );
 }
 
