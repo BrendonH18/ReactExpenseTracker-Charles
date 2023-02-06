@@ -14,7 +14,9 @@ function App() {
   );
 }
 
+
 setTimeout(() => {
+  checkLocalStorage()
   const submitButton = document.getElementById('submitbutton')
   submitButton.addEventListener('click', () => {
     const expenseTable = document.getElementById('expensetable');
@@ -24,8 +26,9 @@ setTimeout(() => {
     }
     const expenseRow = addNewTableRow()
     expenseTable.appendChild(expenseRow);
+    updateLocalStorage()
   })
-}, 2000)
+}, 100)
 
 function addNewTableRow() {
   const inputValues = document.querySelectorAll('input')
@@ -37,7 +40,6 @@ function addNewTableRow() {
     e.value = null
   })
   const deleteButton = createDeleteButton()
-  console.log(typeof (deleteButton))
   expenseItem.appendChild(deleteButton)
 
   return expenseItem
@@ -49,12 +51,30 @@ function createDeleteButton() {
   td.className = "btn btn-primary"
   td.addEventListener('click', () => {
     td.parentElement.remove()
-    console.log('event fired')
-    console.log('createDeleteButton ran', td)
+    updateLocalStorage()
 
   })
   return td
 }
 
+function checkLocalStorage() {
+  const storedExpensesHTML = document.getElementById('expensetable');
+  if (localStorage.getItem('storedExpensesHTML') === null) {
+    localStorage.setItem('storedExpensesHTML', '')
+  } else {
+    storedExpensesHTML.innerHTML = localStorage.getItem('storedExpensesHTML');
+    const persistedExpenseRows = document.querySelectorAll('tr');
+    persistedExpenseRows.forEach((tr) => tr.lastChild.addEventListener('click', () => {
+      tr.remove();
+      updateLocalStorage()
+    }))
+  }
+  return storedExpensesHTML
+}
+
+function updateLocalStorage() {
+  const storedExpensesHTML = document.getElementById('expensetable').innerHTML;
+  localStorage.setItem('storedExpensesHTML', storedExpensesHTML)
+}
 
 export default App;
