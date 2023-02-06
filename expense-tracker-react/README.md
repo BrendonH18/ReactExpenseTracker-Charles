@@ -1,3 +1,23 @@
+# EXPENSE TRACKER 
+
+## Description 
+I used React, Bootstrap, and HTML to create an expense tracker app.  The purpose of this project was to learn how to render composable components in React, customize them with bootstrap for UI and to incorporate local storage. <a href='https://react-expense-tracker.herokuapp.com/'>TRY THIS APP ON HEROKU</a>
+
+<img src='AppScreenShot.png'>
+
+#### Author 
+Charles Brinkman https://www.linkedin.com/in/charlesbrinkman/
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
